@@ -1926,7 +1926,7 @@
 
     <div class="exp-item">
       <div class="exp-meta">
-        <p class="exp-period">Jul 2026 – Present</p>
+        <p class="exp-period">Started Aug 2026</p>
         <p class="exp-co">AI Accounting Agency</p>
         <p class="exp-role">Founding Member &amp; Tech Project Manager</p>
         <div class="exp-tags">
@@ -1948,7 +1948,7 @@
 
     <div class="exp-item">
       <div class="exp-meta">
-        <p class="exp-period">Sep 2023 – Jul 2026</p>
+        <p class="exp-period">Sep 2023 – Aug 2026</p>
         <p class="exp-co">Web Dynamics Intl</p>
         <p class="exp-role">Customer Relations Manager &amp; Internal Tech Lead</p>
         <div class="exp-tags">
@@ -2292,6 +2292,13 @@
 </footer>
 
 <script>
+  /* Use the refreshed downloadable resume PDF. */
+  const resumeDownload = document.querySelector('.resume-cta-btn');
+  if (resumeDownload) {
+    resumeDownload.href = 'output/pdf/Dawa_Resume_Tech_Updated.pdf';
+    resumeDownload.download = 'Dawa_Resume_Tech_Updated.pdf';
+  }
+
   /* NAV hamburger */
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
