@@ -451,12 +451,59 @@
         var(--ink-soft);
     }
     .proof-inner { width: var(--page); margin: auto; padding: clamp(6rem, 11vw, 10rem) 0; }
+    .demo-guide {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      margin: -1.4rem 0 1rem;
+      padding: 1.15rem 1.25rem;
+      border: 1px solid rgba(0,170,255,0.52);
+      background: linear-gradient(90deg, rgba(0,170,255,0.17), rgba(0,170,255,0.045));
+    }
+    .demo-guide-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--blue);
+      font-family: var(--display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .demo-guide-kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(114,229,171,0.12);
+    }
+    .demo-guide strong {
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      line-height: 1.15;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+    }
+    .demo-guide-steps {
+      color: rgba(245,242,237,0.54);
+      font-size: 0.62rem;
+      letter-spacing: 0.09em;
+      line-height: 1.55;
+      text-align: right;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
     .demo-note {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 0.9rem;
       max-width: 75ch;
-      margin: -1.5rem 0 3rem auto;
+      margin: 0 0 2.5rem auto;
       padding: 0.9rem 1rem;
       border-left: 2px solid var(--blue);
       background: rgba(0,170,255,0.055);
@@ -544,6 +591,14 @@
       min-height: 370px;
       background: #10151a;
     }
+    .project-visual-link {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: inherit;
+      text-decoration: none;
+    }
     .project-visual::after {
       content: "";
       position: absolute;
@@ -562,6 +617,9 @@
       transform: scale(1.01);
       transition: opacity 0.35s ease, transform 0.5s ease;
     }
+    .project-visual-link:hover .project-shot,
+    .project-visual-link:focus-visible .project-shot { filter: saturate(0.9) contrast(1.04) brightness(0.9); transform: scale(1.025); }
+    .project-visual-link:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
     .project-visual.is-switching .project-shot { opacity: 0; transform: scale(1.035); }
     .visual-status {
       position: absolute;
@@ -581,6 +639,24 @@
       text-transform: uppercase;
     }
     .visual-status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .visual-open {
+      position: absolute;
+      left: 1.1rem;
+      bottom: 1.1rem;
+      z-index: 3;
+      display: grid;
+      gap: 0.18rem;
+      min-width: min(270px, calc(100% - 2.2rem));
+      padding: 0.85rem 1rem;
+      background: var(--blue);
+      color: var(--ink);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.34);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .project-visual-link:hover .visual-open,
+    .project-visual-link:focus-visible .visual-open { background: #32b9ff; transform: translateY(-3px); }
+    .visual-open span { font-size: 0.56rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+    .visual-open strong { font-family: var(--display); font-size: 1.05rem; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; }
     .project-info {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(230px, 0.55fr);
@@ -631,6 +707,16 @@
       text-decoration-color: var(--blue);
       text-underline-offset: 5px;
     }
+    .primary-project-link {
+      padding: 0.85rem 1rem;
+      background: var(--blue);
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .primary-project-link:hover,
+    .primary-project-link:focus-visible { background: #32b9ff; transform: translateY(-2px); }
+    .secondary-project-link { padding: 0.8rem 0; }
     .project-link[hidden] { display: none; }
 
     .career {
@@ -812,6 +898,8 @@
       .hero-grid { align-items: start; }
       .hero h1 { font-size: clamp(5rem, 16vw, 9rem); }
       .section-title { max-width: 13ch; }
+      .demo-guide { grid-template-columns: auto 1fr; }
+      .demo-guide-steps { grid-column: 2; text-align: left; white-space: normal; }
       .workbench { grid-template-columns: 1fr; }
       .project-index { border-right: 0; border-bottom: 1px solid var(--line); }
       .project-tabs { grid-template-columns: repeat(5, minmax(150px, 1fr)); overflow-x: auto; }
@@ -853,7 +941,9 @@
       .hero-coordinate { display: none; }
       .section, .proof-inner, .capability-inner { padding-top: 5.5rem; padding-bottom: 5.5rem; }
       .section-title { font-size: clamp(3.7rem, 18vw, 6rem); }
-      .demo-note { margin: -1rem 0 2rem; }
+      .demo-guide { grid-template-columns: 1fr; margin-top: -0.8rem; }
+      .demo-guide-steps { grid-column: auto; }
+      .demo-note { margin: 0 0 2rem; }
       .project-tabs { grid-template-columns: repeat(5, minmax(135px, 1fr)); }
       .project-stage { grid-template-rows: 300px auto; }
       .project-visual { min-height: 300px; }
@@ -967,21 +1057,27 @@
       <div class="proof-inner">
         <div class="section-head reveal">
           <div>
-            <p class="eyebrow">Selected systems / 05 live builds</p>
-            <h2 class="section-title">Proof, in <em>production.</em></h2>
+            <p class="eyebrow">Interactive product demos / 05 working builds</p>
+            <h2 class="section-title">Open them. <em>See them work.</em></h2>
           </div>
-          <p class="section-copy">I do not stop at recommendations. I translate operating problems into tools that teams can use. <strong>Every system below works;</strong> the public links are safe demo environments.</p>
+          <p class="section-copy">This is not a concept gallery. <strong>Select a product, inspect the interface, and launch its working public demo.</strong> These are systems I built for real operating problems.</p>
+        </div>
+
+        <div class="demo-guide reveal">
+          <span class="demo-guide-kicker">Live demo gallery</span>
+          <strong>Choose a product on the left. Open its working demo on the right.</strong>
+          <span class="demo-guide-steps">01 Select → 02 Preview → 03 Launch ↗</span>
         </div>
 
         <div class="demo-note reveal">
-          <span>ACCESS NOTE</span>
-          <span>Some write actions, billing features, or account-specific workflows are intentionally view-only in public. Production versions were built for former employers or clients; demos protect their data and access.</span>
+          <span>DEMO ACCESS</span>
+          <span>The links below open safe, public versions you can explore. Some write actions, billing features, and account-specific workflows are intentionally view-only to protect employer and client data.</span>
         </div>
 
         <div class="workbench reveal">
           <aside class="project-index" aria-label="Project selector">
             <div class="project-index-head">
-              <span class="micro">System index</span>
+              <span class="micro">Choose a live demo</span>
               <span class="project-count">01 / 05</span>
             </div>
             <div class="project-tabs" role="tablist" aria-label="Select a project">
@@ -1001,13 +1097,16 @@
                 <span class="project-tab-index">05</span><span class="project-tab-name">Commission Ops</span><span class="project-tab-arrow">→</span>
               </button>
             </div>
-            <p class="project-index-foot">Select a system to inspect the operating problem, build, and live demo.</p>
+            <p class="project-index-foot">The five names above are selectors. Pick one, then launch its demo from the preview.</p>
           </aside>
 
           <article class="project-stage" aria-live="polite">
             <div class="project-visual">
-              <img class="project-shot" src="assets/products/santi.png" alt="Santi computer-use agent project on GitHub">
-              <span class="visual-status">Working build</span>
+              <a class="project-visual-link" href="https://github.com/anthonydawa/santi" target="_blank" rel="noopener" aria-label="Open the Santi Bot source and demo">
+                <img class="project-shot" src="assets/products/santi.png" alt="Santi computer-use agent project on GitHub">
+                <span class="visual-status">Demo preview</span>
+                <span class="visual-open"><span>Working product</span><strong>Open source + demo ↗</strong></span>
+              </a>
             </div>
             <div class="project-info">
               <div>
@@ -1174,7 +1273,7 @@
         image: 'assets/products/santi.png',
         alt: 'Santi computer-use agent project on GitHub',
         tags: ['Computer use', 'Visual grounding', 'Python'],
-        primaryLabel: 'View source + demo',
+        primaryLabel: 'Open source + demo',
         primaryUrl: 'https://github.com/anthonydawa/santi',
         secondaryLabel: '',
         secondaryUrl: ''
@@ -1187,7 +1286,7 @@
         image: 'assets/products/shoort-clips.png',
         alt: 'Shoort Clips demo workspace showing the video operations dashboard',
         tags: ['AI clipping', 'Publishing', 'Autopilot'],
-        primaryLabel: 'Open live demo',
+        primaryLabel: 'Launch working demo',
         primaryUrl: 'https://shoortclips.com/demo',
         secondaryLabel: '',
         secondaryUrl: ''
@@ -1200,7 +1299,7 @@
         image: 'assets/products/content-approval.png',
         alt: 'Content Approval demo queue with social posts and review statuses',
         tags: ['Approvals', 'Client portal', 'Scheduling'],
-        primaryLabel: 'Open live demo',
+        primaryLabel: 'Launch working demo',
         primaryUrl: 'https://approve-content-review.vercel.app/demo',
         secondaryLabel: '',
         secondaryUrl: ''
@@ -1213,7 +1312,7 @@
         image: 'assets/products/call-rating.png',
         alt: 'Call Lens AI call quality dashboard with team scoring',
         tags: ['Call scoring', 'GHL', 'Coaching'],
-        primaryLabel: 'Open live demo',
+        primaryLabel: 'Launch working demo',
         primaryUrl: 'https://call-rating-app.vercel.app/',
         secondaryLabel: '',
         secondaryUrl: ''
@@ -1226,7 +1325,7 @@
         image: 'assets/products/commission.png',
         alt: 'Sales commission dashboard showing contracts, payouts, and forecasts',
         tags: ['Commission logic', 'Forecasting', 'Reporting'],
-        primaryLabel: 'Open live demo',
+        primaryLabel: 'Launch working demo',
         primaryUrl: 'https://ai-accounting-agency-commission-das.vercel.app/demo',
         secondaryLabel: 'Watch demo video',
         secondaryUrl: 'https://drive.google.com/file/d/1OFcIuRHzgWzUloTDhINxmoYuYWaxc8_d/view?usp=sharing'
@@ -1243,6 +1342,8 @@
     var projectTags = document.querySelector('.project-tags');
     var primaryLink = document.querySelector('.primary-project-link');
     var secondaryLink = document.querySelector('.secondary-project-link');
+    var visualLink = document.querySelector('.project-visual-link');
+    var visualOpenLabel = document.querySelector('.visual-open strong');
 
     function selectProject(key) {
       var project = projects[key];
@@ -1263,6 +1364,9 @@
         }).join('');
         primaryLink.href = project.primaryUrl;
         primaryLink.firstChild.textContent = project.primaryLabel + ' ';
+        visualLink.href = project.primaryUrl;
+        visualLink.setAttribute('aria-label', project.primaryLabel + ' for ' + project.title);
+        visualOpenLabel.textContent = project.primaryLabel + ' ↗';
         if (project.secondaryUrl) {
           secondaryLink.hidden = false;
           secondaryLink.href = project.secondaryUrl;
