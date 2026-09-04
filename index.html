@@ -412,6 +412,48 @@
       pointer-events: none;
     }
     .outcome-card-accent::after { color: rgba(4,16,24,0.08); }
+    .role-proof {
+      margin-top: 1.3rem;
+      border: 1px solid rgba(7,9,11,0.22);
+    }
+    .role-proof-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(7,9,11,0.18);
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .role-proof-head strong {
+      font-family: var(--display);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .role-proof-head span { color: var(--muted); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .role-proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .role-proof-item {
+      min-height: 150px;
+      padding: 1.2rem;
+      border-right: 1px solid rgba(7,9,11,0.16);
+      border-bottom: 1px solid rgba(7,9,11,0.16);
+    }
+    .role-proof-item:nth-child(even) { border-right: 0; }
+    .role-proof-item:nth-last-child(-n+2) { border-bottom: 0; }
+    .role-proof-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+    .role-proof-company {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .role-proof-period { color: #297fa7; font-family: var(--display); font-size: 0.63rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .role-proof-item p { margin: 1.3rem 0 0; max-width: 56ch; color: #5b5a56; font-size: 0.78rem; line-height: 1.55; }
+    .role-proof-item p::before { content: "↳"; margin-right: 0.45rem; color: #168ec7; font-weight: 700; }
 
     .section {
       width: var(--page);
@@ -851,6 +893,10 @@
       .outcome-heading { align-items: flex-start; flex-direction: column; gap: 0.45rem; }
       .outcome-card { grid-column: span 12 !important; min-height: 230px; border-right: 0; border-bottom: 1px solid rgba(7,9,11,0.18) !important; }
       .outcome-card:last-child { border-bottom: 0 !important; }
+      .role-proof-head { align-items: flex-start; flex-direction: column; gap: 0.2rem; }
+      .role-proof-grid { grid-template-columns: 1fr; }
+      .role-proof-item { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(7,9,11,0.16) !important; }
+      .role-proof-item:last-child { border-bottom: 0 !important; }
       .hero-coordinate { display: none; }
       .section, .proof-inner, .capability-inner { padding-top: 5.5rem; padding-bottom: 5.5rem; }
       .section-title { font-size: clamp(3.7rem, 18vw, 6rem); }
@@ -960,6 +1006,47 @@
             <span class="outcome-value">1,000+</span>
             <p class="outcome-copy"><strong>Clients managed across the full lifecycle</strong> while leading the #1 revenue department and reaching the lowest churn company-wide.</p>
           </article>
+        </div>
+
+        <div class="role-proof">
+          <div class="role-proof-head">
+            <strong>Career proof stack / 08 records</strong>
+            <span>One concrete achievement from every chapter</span>
+          </div>
+          <div class="role-proof-grid">
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">AI Accounting Agency</span><span class="role-proof-period">2026</span></div>
+              <p>Helped establish the startup's operating model and shipped custom internal tools while managing client technology projects from planning through delivery.</p>
+            </article>
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">Web Dynamics Intl</span><span class="role-proof-period">2023—2026</span></div>
+              <p>Trained and mentored a Client Success team that ranked #1 in KPI performance while automation scaled communications without adding headcount.</p>
+            </article>
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">Wilshire Capital</span><span class="role-proof-period">2023</span></div>
+              <p>Held the team's highest qualified-lead conversion rate and was selected as one of only 5 performers retained from an original cohort of 100.</p>
+            </article>
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">Hewlett-Packard</span><span class="role-proof-period">2021—2023</span></div>
+              <p>Consistently ranked in the top 5 for revenue, led monthly order volume, and completed two years without a customer complaint.</p>
+            </article>
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">Downforce</span><span class="role-proof-period">2020—2021</span></div>
+              <p>Contributed to 2× revenue growth while owning the technology behind course delivery, coaching schedules, and client communications.</p>
+            </article>
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">Scale AI</span><span class="role-proof-period">2018—2020</span></div>
+              <p>Served as a final reviewer for autonomous-driving training data used in programs for Waymo and Tesla, protecting quality at scale.</p>
+            </article>
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">Comcast / Xfinity</span><span class="role-proof-period">2016—2018</span></div>
+              <p>Handled service, sales, and retention simultaneously while sustaining the only perfect monthly CSAT record across 1,500+ agents.</p>
+            </article>
+            <article class="role-proof-item">
+              <div class="role-proof-meta"><span class="role-proof-company">Independent Builds</span><span class="role-proof-period">2016—Present</span></div>
+              <p>Shipped websites and automation systems for local and international clients, including production web work for a Japan-based client.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
