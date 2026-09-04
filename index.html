@@ -327,29 +327,25 @@
       text-transform: uppercase;
     }
     .operator-mode p { margin: 0; color: var(--muted); font-size: 0.82rem; line-height: 1.55; }
-    .operator-signal {
+    .operator-bridge {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 1rem;
       margin-top: 1rem;
-      background: var(--line);
+      padding: 1rem;
+      border: 1px solid var(--line);
+      background: rgba(0,170,255,0.045);
     }
-    .signal-cell { padding: 1rem 0.7rem; background: var(--ink); }
-    .signal-cell strong {
+    .operator-bridge strong {
       display: block;
       font-family: var(--display);
-      font-size: clamp(1.45rem, 2.8vw, 2.15rem);
+      font-size: 1.15rem;
       line-height: 1;
-    }
-    .signal-cell span {
-      display: block;
-      margin-top: 0.45rem;
-      color: var(--muted);
-      font-size: 0.55rem;
-      letter-spacing: 0.08em;
-      line-height: 1.35;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
+    .operator-bridge p { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.45; }
     .hero-coordinate {
       position: absolute;
       left: 24px;
@@ -360,31 +356,81 @@
       text-transform: uppercase;
     }
 
-    .signal-strip {
-      overflow: hidden;
+    .outcome-wall {
+      width: 100%;
       border-bottom: 1px solid var(--line);
       background: var(--paper);
       color: var(--ink);
     }
-    .signal-track {
-      width: max-content;
+    .outcome-inner { width: var(--page); margin: auto; padding: clamp(3.5rem, 7vw, 6rem) 0; }
+    .outcome-heading {
       display: flex;
       align-items: center;
-      gap: 1.2rem;
-      padding: 0.85rem 0;
-      animation: marquee 32s linear infinite;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 1.3rem;
     }
-    .signal-track span {
-      display: inline-flex;
-      align-items: center;
-      gap: 1.2rem;
+    .outcome-heading p { margin: 0; color: #66645f; font-size: 0.72rem; line-height: 1.5; }
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      border: 1px solid rgba(7,9,11,0.22);
+    }
+    .outcome-card {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: clamp(1.3rem, 2.5vw, 2.2rem);
+      border-right: 1px solid rgba(7,9,11,0.18);
+      border-bottom: 1px solid rgba(7,9,11,0.18);
+    }
+    .outcome-card:nth-child(1), .outcome-card:nth-child(4) { grid-column: span 5; }
+    .outcome-card:nth-child(2), .outcome-card:nth-child(3) { grid-column: span 7; }
+    .outcome-card:nth-child(2), .outcome-card:nth-child(4) { border-right: 0; }
+    .outcome-card:nth-child(3), .outcome-card:nth-child(4) { border-bottom: 0; }
+    .outcome-card-accent { background: var(--blue); color: #041018; }
+    .outcome-index {
+      position: relative;
+      z-index: 1;
       font-family: var(--display);
-      font-size: 0.7rem;
+      font-size: 0.67rem;
       font-weight: 700;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
-    .signal-track span::after { content: "◆"; color: var(--blue); font-size: 0.52rem; }
+    .outcome-value {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin: 2.4rem 0 1rem;
+      font-family: var(--display);
+      font-size: clamp(4rem, 8vw, 8.4rem);
+      font-weight: 900;
+      line-height: 0.75;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+    .outcome-value small { font-size: 0.3em; letter-spacing: 0.02em; }
+    .outcome-card-product .outcome-value { font-size: clamp(3.5rem, 6.8vw, 7rem); }
+    .outcome-copy { position: relative; z-index: 1; max-width: 48ch; margin: 0; color: #5b5a56; font-size: 0.83rem; line-height: 1.55; }
+    .outcome-card-accent .outcome-copy { color: rgba(4,16,24,0.75); }
+    .outcome-copy strong { color: var(--ink); font-weight: 600; }
+    .outcome-card::after {
+      content: attr(data-index);
+      position: absolute;
+      right: -0.03em;
+      bottom: -0.3em;
+      color: rgba(7,9,11,0.045);
+      font-family: var(--display);
+      font-size: 15rem;
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .outcome-card-accent::after { color: rgba(4,16,24,0.08); }
 
     .section {
       width: var(--page);
@@ -783,8 +829,6 @@
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.45; transform: scale(0.75); }
     }
-    @keyframes marquee { to { transform: translateX(-50%); } }
-
     @media (max-width: 980px) {
       :root { --page: calc(100vw - 36px); }
       .hero { padding-left: 18px; padding-right: 18px; }
@@ -826,7 +870,10 @@
       .operator-modes { grid-template-columns: 1fr; }
       .operator-mode { min-height: auto; }
       .operator-mode + .operator-mode { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
-      .operator-signal { grid-template-columns: 1fr; }
+      .operator-bridge { grid-template-columns: 1fr; }
+      .outcome-heading { align-items: flex-start; flex-direction: column; gap: 0.45rem; }
+      .outcome-card { grid-column: span 12 !important; min-height: 230px; border-right: 0; border-bottom: 1px solid rgba(7,9,11,0.18) !important; }
+      .outcome-card:last-child { border-bottom: 0 !important; }
       .hero-coordinate { display: none; }
       .section, .proof-inner, .capability-inner { padding-top: 5.5rem; padding-bottom: 5.5rem; }
       .section-title { font-size: clamp(3.7rem, 18vw, 6rem); }
@@ -847,7 +894,6 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-      .signal-track { animation: none; }
     }
   </style>
   <script>document.documentElement.classList.add('js');</script>
@@ -902,21 +948,45 @@
               <p>AI workflows, CRM architecture, automation, dashboards, and production tools.</p>
             </div>
           </div>
-          <div class="operator-signal">
-            <div class="signal-cell"><strong>#1</strong><span>of 1,500+ agents</span></div>
-            <div class="signal-cell"><strong>1,000+</strong><span>clients managed</span></div>
-            <div class="signal-cell"><strong>2×</strong><span>revenue growth</span></div>
+          <div class="operator-bridge">
+            <span class="mode-index">03 / THROUGHLINE</span>
+            <div><strong>Own the outcome.</strong><p>Stay close enough to the customer to know what matters—and technical enough to ship the fix.</p></div>
           </div>
         </aside>
       </div>
       <span class="hero-coordinate">Bacolod City, Philippines · 10.6765° N / 122.9509° E</span>
     </header>
 
-    <div class="signal-strip" aria-hidden="true">
-      <div class="signal-track">
-        <span>100% CSAT</span><span>#1 revenue department</span><span>Lowest company-wide churn</span><span>Zero complaints at HP</span><span>Production AI systems</span><span>100% CSAT</span><span>#1 revenue department</span><span>Lowest company-wide churn</span><span>Zero complaints at HP</span><span>Production AI systems</span>
+    <section class="outcome-wall" aria-labelledby="outcomes-title">
+      <div class="outcome-inner">
+        <div class="outcome-heading">
+          <p class="eyebrow" id="outcomes-title">Operating outcomes / fixed record</p>
+          <p>Four outcomes that define the operating record.</p>
+        </div>
+        <div class="outcome-grid">
+          <article class="outcome-card" data-index="01">
+            <span class="outcome-index">01 / Customer performance</span>
+            <span class="outcome-value">#1</span>
+            <p class="outcome-copy"><strong>Ranked first among 1,500+ agents</strong> with a perfect 100% CSAT score sustained for a full month.</p>
+          </article>
+          <article class="outcome-card outcome-card-accent" data-index="02">
+            <span class="outcome-index">02 / Cost leverage</span>
+            <span class="outcome-value">$20K<small>/MO</small></span>
+            <p class="outcome-copy"><strong>Saved in recurring software spend</strong> by replacing subscription tools with purpose-built internal systems.</p>
+          </article>
+          <article class="outcome-card outcome-card-product" data-index="03">
+            <span class="outcome-index">03 / Product creation</span>
+            <span class="outcome-value">Built → Sold</span>
+            <p class="outcome-copy"><strong>Created products that companies now package and sell</strong>—not prototypes, but working commercial systems.</p>
+          </article>
+          <article class="outcome-card" data-index="04">
+            <span class="outcome-index">04 / Portfolio operations</span>
+            <span class="outcome-value">1,000+</span>
+            <p class="outcome-copy"><strong>Clients managed across the full lifecycle</strong> while leading the #1 revenue department and reaching the lowest churn company-wide.</p>
+          </article>
+        </div>
       </div>
-    </div>
+    </section>
 
     <section class="proof" id="proof">
       <div class="proof-inner">
