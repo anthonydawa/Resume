@@ -902,7 +902,7 @@
       .demo-guide-steps { grid-column: 2; text-align: left; white-space: normal; }
       .workbench { grid-template-columns: 1fr; }
       .project-index { border-right: 0; border-bottom: 1px solid var(--line); }
-      .project-tabs { grid-template-columns: repeat(5, minmax(150px, 1fr)); overflow-x: auto; }
+      .project-tabs { grid-template-columns: repeat(6, minmax(150px, 1fr)); overflow-x: auto; }
       .project-tab { grid-template-columns: 1fr; align-content: center; min-height: 105px; }
       .project-tab-arrow { display: none; }
       .project-index-foot { display: none; }
@@ -944,7 +944,7 @@
       .demo-guide { grid-template-columns: 1fr; margin-top: -0.8rem; }
       .demo-guide-steps { grid-column: auto; }
       .demo-note { margin: 0 0 2rem; }
-      .project-tabs { grid-template-columns: repeat(5, minmax(135px, 1fr)); }
+      .project-tabs { grid-template-columns: repeat(6, minmax(135px, 1fr)); }
       .project-stage { grid-template-rows: 300px auto; }
       .project-visual { min-height: 300px; }
       .project-info { grid-template-columns: 1fr; }
@@ -1057,7 +1057,7 @@
       <div class="proof-inner">
         <div class="section-head reveal">
           <div>
-            <p class="eyebrow">Interactive product demos / 05 working builds</p>
+            <p class="eyebrow">Interactive product demos / 06 working builds</p>
             <h2 class="section-title">Open them. <em>See them work.</em></h2>
           </div>
           <p class="section-copy">This is not a concept gallery. <strong>Select a product, inspect the interface, and launch its working public demo.</strong> These are systems I built for real operating problems.</p>
@@ -1078,7 +1078,7 @@
           <aside class="project-index" aria-label="Project selector">
             <div class="project-index-head">
               <span class="micro">Choose a live demo</span>
-              <span class="project-count">01 / 05</span>
+              <span class="project-count">01 / 06</span>
             </div>
             <div class="project-tabs" role="tablist" aria-label="Select a project">
               <button class="project-tab" type="button" role="tab" aria-selected="true" data-project="santi">
@@ -1096,8 +1096,11 @@
               <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="commission">
                 <span class="project-tab-index">05</span><span class="project-tab-name">Commission Ops</span><span class="project-tab-arrow">→</span>
               </button>
+              <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="bybit">
+                <span class="project-tab-index">06</span><span class="project-tab-name">Trading Copilot</span><span class="project-tab-arrow">→</span>
+              </button>
             </div>
-            <p class="project-index-foot">The five names above are selectors. Pick one, then launch its demo from the preview.</p>
+            <p class="project-index-foot">The six names above are selectors. Pick one, then launch its demo from the preview.</p>
           </aside>
 
           <article class="project-stage" aria-live="polite">
@@ -1266,7 +1269,7 @@
   <script>
     var projects = {
       santi: {
-        count: '01 / 05',
+        count: '01 / 06',
         label: 'Advanced AI R&D · Local computer use',
         title: 'Santi Bot',
         description: 'A local-first computer-use agent that sees the screen, plans a task, and operates the mouse and keyboard. It was built to make long-running automation practical with lighter AI models and includes a live chess demonstration.',
@@ -1279,7 +1282,7 @@
         secondaryUrl: ''
       },
       shoort: {
-        count: '02 / 05',
+        count: '02 / 06',
         label: 'AI video operations · Autonomous publishing',
         title: 'Shoort Clips',
         description: 'An AI-assisted clipping system that moves long-form video through clip creation, hook testing, review, scheduling, and publishing—with an autopilot path designed for zero-touch channel operations.',
@@ -1292,7 +1295,7 @@
         secondaryUrl: ''
       },
       approval: {
-        count: '03 / 05',
+        count: '03 / 06',
         label: 'Production workflow · Former employer',
         title: 'Content Approval',
         description: 'A centralized content-review and scheduling workspace built for a former employer. It gives clients and teams one place to review creative, approve posts, leave feedback, and see the publishing calendar.',
@@ -1305,7 +1308,7 @@
         secondaryUrl: ''
       },
       calls: {
-        count: '04 / 05',
+        count: '04 / 06',
         label: 'Sales quality · GHL-connected workflow',
         title: 'Call Lens',
         description: 'A call-quality system designed to connect with GHL recordings, score conversations, surface sentiment and coaching categories, and turn raw calls into a clear team-performance view.',
@@ -1318,7 +1321,7 @@
         secondaryUrl: ''
       },
       commission: {
-        count: '05 / 05',
+        count: '05 / 06',
         label: 'Production finance ops · Former company',
         title: 'Commission Ops',
         description: 'A signed-contract-to-commission system currently used by a former company. It calculates upfront and recurring commissions, builds payout schedules, forecasts earnings, and produces downloadable reports.',
@@ -1329,6 +1332,19 @@
         primaryUrl: 'https://ai-accounting-agency-commission-das.vercel.app/demo',
         secondaryLabel: 'Watch demo video',
         secondaryUrl: 'https://drive.google.com/file/d/1OFcIuRHzgWzUloTDhINxmoYuYWaxc8_d/view?usp=sharing'
+      },
+      bybit: {
+        count: '06 / 06',
+        label: 'Fintech systems · AI-assisted execution',
+        title: 'Bybit Trading Copilot',
+        description: 'An AI-assisted trading and analytics workspace that combines real-time Bybit data across 850+ USDT markets, TradingView-style charting, strategy building, paper and live execution, plus Gemini-powered chart analysis and pre-trade critique.',
+        image: 'assets/products/bybit-trading.webp',
+        alt: 'AI Bybit Trading Copilot dashboard with live charting, order book, strategy builder, and AI analysis',
+        tags: ['Real-time markets', 'AI analysis', 'Paper trading'],
+        primaryLabel: 'Launch working demo',
+        primaryUrl: 'https://bybit-trading-bot.hostingersite.com',
+        secondaryLabel: 'View source',
+        secondaryUrl: 'https://github.com/anthonydawa/bybit_trading_bot'
       }
     };
 
